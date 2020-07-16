@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>DragAndDrop</title>
+    <script>
+      const allowDrop = e => e.preventDefault();
+      const drag = e => e.dataTransfer.setData('color', e.target.id);
+      const drop = e => {
+        e.preventDefault();
+        const id = e.dataTransfer.getData('color');
+        const color = document.getElementById(id).style.backgroundColor;
+        e.target.style.backgroundColor = color;
+      };
+    </script>
+  </head>
+  <body>
+    <div
+      id="target"
+      ondrop="drop(event)"
+      ondragover="allowDrop(event)"
+      style="background-color: white; border:1px solid black; height:100px; width:100px; margin:100px;"
+    ></div>
+    <div
+      id="option"
+      draggable="true"
+      ondragstart="drag(event)"
+      style="background-color: crimson ; border:1px solid black; height:100px; width:100px; margin:50px;"
+    ></div>
+  </body>
+</html>
